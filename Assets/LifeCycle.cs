@@ -2,52 +2,56 @@ using UnityEngine;
 
 public class LifeCycle : MonoBehaviour
 {
-    private void Awake()
-    {
-        //게임 오브젝트가 장면 안에 생성될 때 최초로 실행 됨
-        Debug.Log("플레이어 데이터가 준비되었습니다.");
-    }
-
-    private void OnEnable()
-    {
-        Debug.Log("플레이어가 로그인했습니다");
-    }
-
-    private void Start()
-    {
-        //업데이트 시작 직전 최초 1회
-        Debug.Log("사냥 장비를 챙겼습니다.");
-    }
-
-    private void FixedUpdate()
-    {
-        //물리 연산이 필요한 경우 사용
-        //프레임과 관계없이 일정한 시간 간격으로 호출됨
-        Debug.Log("이동~");
-    }
-
     private void Update()
     {
-        Debug.Log("몬스터 사냥!!");
-    }
+        if (Input.anyKeyDown)
+        {
+            Debug.Log("플레이어가 아무 키를 눌렀습니다");
+        }
 
-    private void LateUpdate()
-    {
-        //업데이트가 끝난 후 호출됨
-        //카메라의 위치를 업데이트 할 때 사용
-        Debug.Log("경험치 획득");
-    }
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("아이템을 구입했습니다");
+        }
 
-    private void OnDisable()
-    {
-        //게임 오브젝트가 비활성화 될 때 호출됨
-        Debug.Log("플레이어가 로그아웃했습니다");
-    }
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            Debug.Log("왼쪽으로 이동합니다");
+        }
 
-    private void OnDestroy()
-    {
-        //게임 오브젝트가 파괴될 때 호출됨
-        Debug.Log("플레이어 데이터를 해제하였습니다");
-    }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            Debug.Log("오른쪽 이동을 멈췄습니다");
+        }
 
+        if(Input.GetMouseButtonDown(0))
+        {
+            Debug.Log("미사일 발사!");
+        }
+
+        if (Input.GetMouseButton(0))
+        {
+            Debug.Log("미사일 모으는 중...");
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            Debug.Log("슈퍼 미사일 발사!");
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            Debug.Log("점프!");
+        }
+
+        if (Input.GetButton("Jump"))
+        {
+            Debug.Log("점프 모으는 중...");
+        }
+
+        if (Input.GetButtonUp("Jump"))
+        {
+            Debug.Log("슈퍼 점프!!");
+        }
+    }
 }
